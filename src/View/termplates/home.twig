@@ -1,0 +1,164 @@
+{% extends "base.twig" %}
+
+{% block title %}HOME{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/homeStyle.css', 'css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/scrollview.css', 'css') }}">
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+    <div class = titleSection>
+        <h2>More views
+            <i class="navbar-right material-icons medium pos-left icon-blue">visibility</i>
+        </h2>
+        <hr/>
+    </div>
+    <div class="row">
+        {% if hihaimages %}
+            {% for row1 in imagesMoreViews [:5]%}
+                {% for row2 in users %}
+                    {% if row1["user_id"] == row2["id"] %}
+                        <div class="card">
+
+                            <div class="card-image">
+                                <a href="/ViewImage/{{ row1["id"] }}"><img src="{{ asset('/'~row2['username']~'/'~row1['img_path'],'images')}}"></a>
+                                <span class="card-title">{{ row1['title'] }}</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red" href="/newlike/home/{{ row1["id"] }}" name="action"><i class="material-icons"  >favorite</i></a>
+                            </div>
+
+                            <div class="card-panel teal">
+                                <span class="white-text">
+                                    <h5>Author: {{ row2["username"] }} </h5>
+                                    <h5>Date post: {{ row1["created_at"] }}</h5>
+                                    <p>Likes: 0</p>
+                                    <h5>Views: {{ row1["visits"] }}</h5>
+                                </span>
+                            </div>
+
+                            <form action="/newComment/home/{{ row1["id"] }}" METHOD="POST">
+                                <div class="card-content">
+                                    {% if row1['comments'] != 0 %}
+                                        <div  class="divScroll2" >
+                                            {% for row3 in comentari1%}
+
+                                                {% if  row3["id_image"] == row1["id"]%}
+
+                                                    <tr>
+                                                        <div class="card-content">
+                                                            <label>{{ row3["username"] }}</label>
+                                                            <li name="comment1">{{ row3['text']}}</li>
+                                                        </div>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {% if logged %}
+                                        {%  set canComment = 0 %}
+                                        {% for row in comentari1%}
+                                            {% if  row['id_image'] == row1["id"]%}
+                                                {% if  (row["username"] == username) %}
+                                                    {%  set canComment = 1 %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if  canComment == 0%}
+                                            <input type="text" name="comment">
+                                            <button class="btn waves-effect waves-light" id="submit_but" type="submit" name="action">
+                                                <i class="material-icons right">Comment</i>
+                                            </button>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div id="posts">
+    </div>
+    <fieldset class="action">
+        <h4 id = "labelInfoButon"> Press the button</h4>
+        <input class="btn waves-effect waves-light btn-light-green accent-1 material-icons" href="#" type="button" id = "submit" name="submit" value = "add" onclick="listsection()">
+        <h4 id = "labelInfoButon">for 5 more posts</h4>
+    </fieldset>
+    <div class="row">
+    <div class = titleSection>
+        <h2>Recent posts
+            <i class="navbar-right material-icons medium icon_clock pos-left">query_builder</i>
+        </h2>
+        <hr/>
+    </div>
+    <div class="row">
+        {% if hihaimages %}
+            {% for row1 in imagesRecents [:5]%}
+                {% for row2 in users %}
+                    {% if row1["user_id"] == row2["id"] %}
+                        <div class="card">
+                            <div class="card-image">
+                                <a href="/ViewImage/{{ row1["id"] }}"><img src="{{ asset('/'~row2['username']~'/'~row1['img_path'],'images')}}"></a>
+                                <span class="card-title">{{ row1['title'] }}</span>
+                            </div>
+                            <div class="card-panel teal">
+                                <span class="white-text">
+                                    <p>Author: {{ row2["username"] }} </p>
+                                    <p>Date post: {{ row1["created_at"] }}</p>
+                                    <p>Likes: 8</p>
+                                    <p>Views: {{ row1["visits"] }}</p>
+                                </span>
+                            </div>
+                            <div class="card-content">
+                                {% if row1['comments'] != 0 %}
+
+
+
+                                    <div  class="divScroll2" >
+                                        {% for row in comentari1 [:nComents]%}
+                                            {% if  row["id_image"] == row1["id"]%}
+
+
+                                                <tr>
+                                                    <div class="card-content">
+                                                        <label>{{ row["username"] }}</label>
+                                                        <li name="comment1">{{ row['text']}}</li>
+                                                    </div>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+
+                                    {% if nComents >= comentari1|length %}
+                                        <p>NO HI HA MES COMENTARIS</p>
+                                    {% else %}
+                                        <a href="/imagesView/{{ nComents}}" >
+                                            ...
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if logged %}
+                                    <input type="text" name="comment">
+                                    <button class="btn waves-effect waves-light" id="submit_but" type="submit" name="action">
+                                        <i class="material-icons right">Comment</i>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div id="posts">
+    </div>
+    <fieldset class="action">
+        <h4 id = "labelInfoButon"> Press the button</h4>
+            <input class="btn waves-effect waves-light btn-light-green accent-1 material-icons" type="button" id = "submit" name="submit" value = "add" onclick="listsection()">
+        <h4 id = "labelInfoButon">for 5 more posts</h4>
+    </fieldset>
+{% endblock %}

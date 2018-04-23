@@ -1,0 +1,92 @@
+{% extends "base.twig" %}
+
+{% block title %}User info{% endblock %}
+
+{% block head %}
+
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/image_edit.css', 'css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+    <div class="jumbotron" id="form_edit">
+        <div class="row">
+            {% if insert %}
+                <form class="col s12" action="/NewImage" method="POST" enctype="multipart/form-data">
+            {% else %}
+                <form class="col s12" action="/UpdateImage/{{ img_id }}" method="POST" enctype="multipart/form-data">
+            {% endif %}
+                <h2>Image info</h2>
+                {% if msg != null %}
+                    <h3 id="err">-- {{ msg }} --</h3>
+                {% endif %}
+                <hr/>
+                <div class="row" id="img_edit">
+                    <div class="input-field col s6" id="img_id">
+                        <label for="file-input">
+                            {% if insert %}
+                                <img id="img_input" src="{{ asset('/profile.jpg', 'images') }}" >
+                            {% else %}
+                                <img id="img_input" src="{{ asset(''~username~'/'~image["img_path"], 'images') }}" >
+                            {% endif %}
+                        </label>
+                        <input id="file-input" name="file-input" type="file" style="display: none;" onchange="previewFile()"/>
+                    </div>
+                </div>
+
+                <div class="row" id="info_edit">
+                    <div class="row" id="title_edit">
+                        <div class="input-field col s6">
+                            Title:
+                            {% if insert %}
+                                <input placeholder="" id="title" name="title" type="text" class="validate">
+                            {% else %}
+                                <input placeholder="" id="title" name="title" type="text" class="validate" value="{{ image["title"] }}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row" id="private_edit">
+                        <div class="input-field col s6" id="priv">
+                            Private:
+                        </div>
+                        <div class="input-field col s6">
+                            <!-- Switch -->
+                            <div class="switch">
+                                <label>
+                                    No
+                                    <input type="checkbox" id="check_private" name="check_private" >
+                                    <span class="lever"></span>
+                                    Yes
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" id="butons">
+                    <button class="btn waves-effect waves-light" id="submit_but" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+
+                    <a href="/Profile/{{ username }}">
+                        <button class="btn waves-effect waves-light red" id="cancel_but" type="button">Back
+                            <i class="material-icons right">block</i>
+                        </button>
+                    </a>
+                </div>
+
+            </form>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('/preview.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+
+{% endblock %}
+

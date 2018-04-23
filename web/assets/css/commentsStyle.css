@@ -1,0 +1,17 @@
+
+#titleComments{
+    margin-left: 40px;
+    font-family: fantasy;
+}
+i.material-icons.medium.iconComment{
+    color: #0D47A1;
+}
+#seccionComments{
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+#eachComment{
+    margin-bottom: 6px;
+}

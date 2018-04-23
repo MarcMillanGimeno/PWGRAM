@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+{% block title %}Error page{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/commentsStyle.css', 'css') }}">
+
+{% endblock %}
+{% block content %}
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/"> <img src="{{ asset('/logo1.png','images')}}" id="brand-logo"></a>
+        </div>
+    </nav>
+    <h1>An error has occurred</h1>
+    <p>{{ message }}</p>
+{% endblock %}

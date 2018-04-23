@@ -1,0 +1,93 @@
+{% extends "base.twig" %}
+
+{% block title %}User info{% endblock %}
+
+{% block head %}
+
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/image_edit.css', 'css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+    <div class="jumbotron" id="form_edit">
+        <div class="row">
+
+            <h2>Image info</h2>
+
+            <hr/>
+            <div class="row" id="img_edit">
+                <div class="input-field col s6" id="img_id">
+                    <label for="file-input">
+
+                        <img id="img_input" src="{{ asset(''~user["username"]~'/'~image["img_path"], 'images') }}" >
+
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="row" id="info_edit">
+                <div class="row" id="title_edit">
+                    <div class="input-field col s6">
+                        <div class="row">
+                            User:
+                            <a href="/Profile/{{ user["username"] }}">{{ user["username"] }}</a>
+                        </div>
+
+                        <div class="row">
+                            Title:
+                            {{ image["title"] }}
+                        </div>
+
+                        <div class="row">
+                            Posted:
+                            {% if time == 0 %}
+                                Less than 1 day
+                            {% else %}
+                                {% if time == 1 %}
+                                    1 day ago
+                                {% else %}
+                                    {{ time }} days ago
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            Number of views:
+                            {{ image["visits"] }}
+                        </div>
+                        <div class="row">
+                            Number of likes: 0
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="coments_section">
+                <h3>Coments section</h3>
+
+                <hr/>
+            </div>
+
+            <div class="row" id="butons">
+
+                <a href="/Profile/{{ username }}">
+                    <button class="btn waves-effect waves-light red" id="cancel_but" type="button">Back
+                        <i class="material-icons right">block</i>
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('/preview.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+
+{% endblock %}
+

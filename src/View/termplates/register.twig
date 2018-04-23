@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block title %}Hello page{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/homeStyle.css', 'css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/materialize.css', 'css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bootstrap.css', 'css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/styles.css', 'css') }}">
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+    {% block scripts %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('/app.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+
+    {% endblock %}
+
+    <form action="/registerUser" METHOD="POST" enctype="multipart/form-data">
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>File</span>
+                <input type="file"  onchange="previewFile()" width =200 name="img_path" id = "img_path">
+
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+                <img id="blah" src="{{ asset('/profile.jpg','images') }}" class="materialboxed" width="100" >
+                {% if not errorImage %}
+                    <span class="error">{{  errorImage }}</span>
+                    <!-- <h1>{{  errorImage }}</h1> -->
+                {% endif %}
+            </div>
+        </div>
+        {{ form_widget(form) }}
+        {% if  okRegister %}
+            <a href="/activeUser">Activar Usuari</a>
+        {% endif %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.twig" %}
+
+{% block title %}User info{% endblock %}
+
+{% block head %}
+
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/profile_edit.css', 'css') }}">
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+
+    <div class="jumbotron" id="form_edit">
+        <div class="row">
+            <form class="col s12" action="/ConfirmProfile" method="post" enctype="multipart/form-data">
+                <h2>User info</h2>
+                {% if msg != null %}
+                    <h3 id="err">-- {{ msg }} --</h3>
+                {% endif %}
+
+                <hr/>
+                <div class="row" id="img_edit">
+                    <div class="input-field col s6" id="img_id">
+                        <label for="file-input">
+                            {% if user["img_path"] == "" %}
+                                <img id="img_input" src="{{ asset('profile.jpg', 'images') }}" >
+                            {% else %}
+                                <img id="img_input" src="{{ asset(''~username~'/'~user["img_path"], 'images') }}" >
+                            {% endif %}
+                        </label>
+
+                        <input id="file-input" name="file-input" type="file" style="display: none;"/>
+                        <label for="img_id" id="lab_img">Selecciona la nova imatge</label>
+                    </div>
+                </div>
+
+                <div class="row" id="info_edit">
+                    <div class="row" id="bdate_edit">
+                        <div class="input-field col s6">
+                            Birth Date:
+                            <input placeholder="" name="bdate" id="bdate" type="date" class="validate" value="{{ user["birthdate"] }}">
+
+                        </div>
+                    </div>
+                    <div class="row" id="name_edit">
+                        <div class="input-field col s6">
+                            UserName:
+                            <input placeholder="" name="user_name" id="user_name" type="text" class="validate" value="{{ user["username"] }}">
+                        </div>
+                    </div>
+
+                </div>
+                <h2>Private info</h2>
+                <hr/>
+                <div class="row" id="pwd_edit">
+                    <div class="row" id="f_pwd">
+                        <div class="input-field col s6">
+                            New Password:
+                            <input id="password" name="password" type="password" class="validate">
+
+                        </div>
+                    </div>
+                    <div class="row" id="s_pwd">
+                        <div class="input-field col s6">
+                            Confirm new password:
+                            <input id="password" name="password_repeat" type="password" class="validate">
+
+                        </div>
+                    </div>
+                </div>
+                <input type="checkbox" name="filled-in-box" class="filled-in" id="filled-in-box" checked="checked" />
+                <label for="filled-in-box" id="private_check">Change Password</label>
+
+                <button class="btn waves-effect waves-light" id="submit_but" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+                <a href="/">
+                    <button class="btn waves-effect waves-light red" id="cancel_but" type="button">Back
+                        <i class="material-icons right">block</i>
+                    </button>
+                </a>
+                </form>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{{ parent() }}
+    <script src="{{ asset('/preview.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+
+{% endblock %}

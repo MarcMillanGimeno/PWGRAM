@@ -1,0 +1,127 @@
+#user{
+    margin: 50px;
+    margin-left:150px;
+    margin-right:150px;
+
+    padding: 100px;
+    padding-left: 150px;
+    padding-top: 50px;
+    padding-bottom: 160px;
+    height: 350px;
+}
+#other_user{
+    margin: 50px;
+    margin-left:150px;
+    margin-right:150px;
+
+    padding: 100px;
+    padding-left: 150px;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    height: 350px;
+
+}
+#msg_img{
+    margin-left: 500px;
+    margin-top: 125px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+#title_edit{
+    font-style: italic;
+    text-shadow: -1px -1px 1px black, 1px 1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
+}
+.card{
+    width: 300px;
+    margin: 3%;
+    float: left;
+}
+.card .card-image img{
+    height: 250px;
+}
+#info_user{
+    float: left;
+    margin-top: -10px;
+    width: 50%;
+}
+#div_img{
+    float: left;
+    margin-right: 50px;
+}
+
+.jumbotron{
+    background-color: transparent;
+    box-shadow: 2px 2px 20px #888888;
+}
+
+#name_label{
+
+    margin: 10px;
+    margin-left: 75px;
+    font-size: large;
+    font-style: italic;
+}
+#com_label{
+
+    margin: 10px;
+    margin-left: 75px;
+    font-size: large;
+    font-style: italic;
+}
+#posts_label{
+
+    margin: 10px;
+    margin-left: 75px;
+    font-size: large;
+    font-style: italic;
+}
+
+#name_info{
+    margin: 10px;
+    margin-left: 10px;
+    font-size: large;
+    font-style: italic;
+}
+#com_info{
+    margin: 10px;
+    margin-left: 10px;
+    font-size: large;
+    font-style: italic;
+}
+#posts_info{
+    margin: 10px;
+    margin-left: 10px;
+    font-size: large;
+    font-style: italic;
+}
+
+img{
+    width: 250px;
+    height: 250px;
+}
+
+#profile_edit_but{
+
+    margin: 25px;
+    margin-left: 150px;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#profile_publis{
+
+    margin: 25px;
+    margin-left: 75px;
+    font-size: large;
+    font-style: italic;
+}
+#content_profile{
+
+    margin-left:125px;
+    margin-right:125px;
+    margin-bottom: 50px;
+}
+#icon_del{
+    margin: 45px;
+    margin-bottom: 0px;
+}

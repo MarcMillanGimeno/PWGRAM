@@ -1,0 +1,37 @@
+#form_edit{background-color: transparent; margin: 250px; padding:5%; margin-top: 0px; margin-bottom: 25px;padding-top: 3%}
+#img_edit{float: left;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    width: 250px;}
+img{
+    width: 250px;
+    height: 250px;
+}
+#img_id{float: left; margin-right: 50px; margin-bottom: 50px}
+#info_edit{width: 100%}
+#img_id{height: 225px;, width:225px;}
+#bdate_edit{float:left;margin-bottom: 25px; margin-left:3px; margin-top: 25px;width: 50%}
+#pwd_edit{margin-bottom: 25px; float: left; width: 75%}
+#f_pwd{margin-bottom: 12px}
+#s_pwd{margin-top: 12px}
+#lab_img{font-size: large; font-style: italic;align-items: flex-start}
+#submit_but{margin-top: 25px; margin-bottom: 25px; width: 125px;}
+#cancel_but{width: 125px}
+
+#err{
+    font-style: italic;
+    color: red;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    margin-bottom: 50px;
+}
+h2{
+    margin-top: 25px;
+}

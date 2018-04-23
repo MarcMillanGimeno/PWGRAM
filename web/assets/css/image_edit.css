@@ -1,0 +1,35 @@
+#form_edit{background-color: transparent; margin: 250px; padding:5%; margin-top: 0px; margin-bottom: 25px;padding-top: 3%;}
+#img_edit{float: left;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    width: 250px;}
+img{
+    width: 250px;
+    height: 250px;
+}
+#info_edit{width: 100%; margin-top: 75px; margin-left: 50px;}
+#img_id{height: 225px;, width:225px;}
+#title_edit{float: left; width: 55%}
+#private_edit{float:left;margin-bottom: 25px; margin-top: 25px; width: 50%;}
+#submit_but{margin-top: 25px; margin-bottom: 25px; width: 125px;}
+#cancel_but{width: 125px;}
+#butons{margin-left:60%; margin-top: 20px;}
+#priv{margin-right: 100%; margin-bottom: 10px;}
+#err{
+    font-style: italic;
+    color: red;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+h2{
+    margin-top: 25px;
+}

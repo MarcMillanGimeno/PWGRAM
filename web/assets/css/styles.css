@@ -1,0 +1,86 @@
+nav i{
+    font-size: xx-large;
+}
+#footer{
+    bottom: 0;
+    padding: 1%;
+    background-color: #0D47A1;
+    color: #FFFFFF;
+}
+.fieldClass{
+    color: #0D47A1;
+}
+#brand-logo {
+    width:180px;
+    height:45px;
+    margin:20px;
+    margin-left:100px;
+    float: left;
+}
+nav {
+    background-color: #00acc1;
+    height: 70px;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+i.icon-perfil{
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 30px;
+}
+#icon-see-perfil{
+    color: #1a237e;
+}
+#icon-add-photo{
+    color:#00e5ff;
+}
+
+i.icon-alert{
+    margin-top: 8px;
+    color: sandybrown;
+    margin-right: 40px;
+    font-size: 30px;
+}
+a.btn-logOut{
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+a.btn.btn-floating.btn-large.pulse{
+    margin-right: 20px;
+    margin-top: 8px;
+}
+nav i, nav i.material-icons{
+    display: inline;
+    align-content: center;
+
+    margin-right: 20px;
+}
+#image-logo{
+    margin-top:15px;
+    margin-right: 16px;
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons{
+    font-size: 40px;
+}
+h3.navbar-right{
+    font-family: "Berlin Sans FB";
+    margin-top: 25px;
+    padding-right: 20px;
+}
+#footer{
+    position: absolute;
+    width: 100%;
+}

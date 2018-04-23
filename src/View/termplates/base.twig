@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('/materialize.css', 'css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/bootstrap.css', 'css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/styles.css', 'css') }}">
+
+        <title>{% block title %}{% endblock %} - PWGRAM</title>
+    {% endblock %}
+</head>
+<body>
+<div id ="content">{% block content %}
+        <nav>
+        <div class="nav-wrapper">
+            <a href="/"> <img src="{{ asset('/logo1.png','images')}}" id="brand-logo"></a>
+            {% if logged == false %}
+                <form class="navbar-form navbar-right" action="/logIn" METHOD="POST">
+                    <div class="form-group">
+                        <input id="name" name="name" type="text" placeholder="User name"
+                               class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input id="passwordUser" name="passwordUser" type="password" placeholder="Password"
+                               class="form-control">
+                    </div>
+                    <input id = "btnLogIn" type="submit" class="btn btn-warning" value="Log in">
+                    <a id = "btnSignIn" class = "btn btn-success" href="/signIn" role="button">Sign in !!</a>
+                    {% if message != ''%}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <span class="labelclose" onclick="this.parentElement.style.display='none';">{{ message }}</span>
+                        </div>
+                    {% endif %}
+                </form>
+            {% else %}
+                <a class="navbar-right btn btn-danger btn-logOut" href="/logOut" role="button">Log out</a>
+                <a href="/ProfileEdit">
+                    <h3 class="navbar-right">Hi {{ username }}</h3>
+                </a>
+
+                <img src="{{ asset('/'~username~'/'~image_rute,'images')}}" id="image-logo" class="navbar-right" >
+
+                <a href="/" class="navbar-right waves-effect meddium icon-alert">
+                    <i class="material-icons">add_alert</i>
+                </a>
+
+                <a href="/Profile/{{username}}" class="navbar-right waves-effect meddium">
+                    <i class="material-icons">account_circle</i>
+                </a>
+
+                <a href="/ImageInsert" class="navbar-right waves-effect meddium">
+                    <i class="material-icons">insert_photo</i>
+                </a>
+
+                <a href="/Comments" class="navbar-right waves-effect meddium">
+                    <i class="material-icons iconComent">comment</i>
+                </a>
+            {% endif %}
+        </div>
+        </nav>
+    {% endblock %}</div>
+<div id="footer">
+    {% block footer %}
+        &copy; Copyright 2017 - Marc Millán Gimeno, Albert Martí Rolland, Albert Bosch Pascual.
+    {% endblock %}
+</div>
+
+{% block scripts %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('/app.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('/materialize.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('/bootstrap.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+
+{% endblock %}
+</div>
+
+</body>
+</html>

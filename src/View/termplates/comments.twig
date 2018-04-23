@@ -1,0 +1,70 @@
+{% extends "base.twig" %}
+
+{% block title %}Hello page{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/scrollview.css','css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <form action="/newComment" METHOD="POST">
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ asset("sosi.jpg","images") }}" weight = "300" height="400">
+                        <span class="card-title">Títle</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Autor</a>
+                    </div>
+                    <div class="card-content">
+                        {% if hihacomment  %}
+
+                            <div  class="divScroll2" >
+                                {% for row in comentari1 [:nComents]%}
+                                        <tr>
+                                                <div class="card-content">
+                                                    <label>{{ row["username"] }}</label>
+                                                    <li name="comment1">{{ row['text']}}</li>
+                                                </div>
+                                        </tr>
+
+                                {% endfor %}
+
+
+                            </div>
+
+                            {% if nComents >= comentari1|length %}
+
+                                <p>NO HI HA MES COMENTARIS</p>
+                            {% else %}
+                                <a href="/imagesView/{{ nComents}}" >
+                                    ...
+                                </a>
+                            {% endif %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <input type="text" name="comment">
+            <button class="btn waves-effect waves-light" id="submit_but" type="submit" name="action">
+                <i class="material-icons right">Comment</i>
+            </button>
+        </div>
+
+
+
+    </form>
+
+    <div class="row">
+{% endblock %}

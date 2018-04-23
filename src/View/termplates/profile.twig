@@ -1,0 +1,113 @@
+{% extends "base.twig" %}
+
+{% block title %}PROFILE{% endblock %}
+
+{% block head %}
+
+    {{ parent() }}
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/profile.css', 'css') }}">
+
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+
+    {% if own %}
+        <div class="jumbotron" id="user">
+    {% else %}
+        <div class="jumbotron" id="other_user">
+    {% endif %}
+            <div id="div_img">
+                {% if image_profile == "" %}
+                    <img src="{{ asset('profile.jpg', 'images') }}">
+                {% else %}
+                    <img src="{{ asset(''~profile_name~'/'~image_profile, 'images') }}" >
+                {% endif %}
+        </div>
+
+        <div id="info_user" >
+            <div class="row">
+                <label id="name_label">User name: </label>
+                <label id="name_info">{{ profile_name }}</label>
+            </div>
+
+            <div class="row">
+                <label id="com_label">Number of Comments: </label>
+                <label id="com_info">XXX</label>
+            </div>
+
+            <div class="row">
+                <label id="posts_label">Number of Posts: </label>
+                <label id="posts_info">{{ num }}</label>
+            </div>
+
+        </div>
+        {% if own %}
+            <a class="btn waves-effect waves-light green" id="edit_but" role="button" href="/ProfileEdit">Edit
+                <i class="material-icons right">mode_edit</i>
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="row" id="content_profile">
+
+        {% if num != 0 %}
+                {% for i in 0..num-1 %}
+
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="/ViewImage/{{ ids[i]["id"] }}"><img src="{{ asset( '' ~ profile_name ~ '/' ~ images[i]["img_path"] ,'images')}}"></a>
+                            <span id="title_edit" class="card-title">{{ titles[i]["title"] }}</span>
+                            {% if own %}
+                                {% if logged %}
+
+                                    <div>
+                                        <a id="icon_edit" class="btn-floating halfway-fab waves-effect waves-light green" href="/ImageEdit/{{ ids[i]["id"] }}"><i class="material-icons">mode_edit</i></a>
+                                    </div>
+
+                                    <div>
+                                        <a id="icon_del" data-toggle="modal" data-target="#myModal{{ ids[i]["id"] }}" class="ul.examples li.warning.confirm button btn-floating halfway-fab waves-effect waves-light red"><i  id="deleteButton" class="material-icons">delete</i></a>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal{{ ids[i]["id"] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the image?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <a type="button" class="btn btn-primary" href="/RemoveImage/{{ ids[i]["id"] }}">Accept</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+                            {% else %}
+                                {% if logged %}
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                                I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+        {% else %}
+            <div class="row" id="msg_img">
+                <h2>This user has no images yet</h2>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+{% block title %}Comments user {{ username }}{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/commentsStyle.css', 'css') }}">
+
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+    <div class = titleSection>
+        <h2 id = "titleComments">COMMENTS
+            <i class="material-icons medium iconComment">comments</i>
+        </h2>
+        <hr/>
+    </div>
+    <div id = "seccionComments" class="row">
+        <h5 id = title>Comments by <strong>{{ username }} </strong> </h5>
+        <h4> {{ message }}</h4>
+            {% if comments|length > 0 %}
+                {% for row in comments %}
+
+                    {% for rowImage in allImages %}
+                        {% if rowImage["id"] == row["id_image"] %}
+                            <div id = seccionOne>
+                                <a href="/DeleteComment/{{ row["id"] }}" class="navbar-left waves-effect meddium">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                                <a href="/EditComment/{{ row["id"] }}" class="navbar-left waves-effect meddium">
+                                    <i class="material-icons">mode_edit</i>
+                                </a>
+                                <h4 id = "eachComment"> You commented: <em>'{{ row["text"] }}'</em> . . . . in post  <tt>{{ rowImage["title"] }}</tt></h4>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endfor %}
+            {% else %}
+                <h4>You have not comments</h4>
+            {% endif %}
+
+    </div>
+{% endblock %}
