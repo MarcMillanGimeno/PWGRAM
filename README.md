@@ -1,5 +1,7 @@
 # PWGRAM
 
+**Author**: Marc Millán Gimeno - ls29307 
+
 ## 1. Introduction
 
 The practical final of Projects Web treats to design a platform web that emulate the operation of the already known social network of *Instagram. 
@@ -44,7 +46,9 @@ In this block have implemented the functions because the user can create a comme
  
 ### 2.9. *Likes Of the images:
 To implement the functionality of the *likes use the function *newlikeHome (nine *like to an image) and *delatelikeHome (delete *like of the image).
-2.10. Notifications This block features only of 2 functions, *showNotifications that it is to show the 
+
+### 2.10. Notifications: 
+This block features only of 2 functions, *showNotifications that it is to show the 
 list of the notifications and *delateNotifications that will allow us erase the 
 notifications. 
  
@@ -53,3 +57,10 @@ This functionality only has a function. *GoHomeAction Allow us *rendering the *t
  
 ### 2.12. Images more seen:
 This functionality find it in the function of the man, where have done a *select to order all the *posts that have done  as the date of creation and next have sent the result of this *select to the *twig.
+
+**Date of deliver** : 18/05/2017
+
+**Colaborators:**
+
+   - Albert Bosch Pascual  ls28932
+   - Albert Martí Rolland  ls28855
