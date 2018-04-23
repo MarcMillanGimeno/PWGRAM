@@ -48,9 +48,7 @@ In this block have implemented the functions because the user can create a comme
 To implement the functionality of the *likes use the function *newlikeHome (nine *like to an image) and *delatelikeHome (delete *like of the image).
 
 ### 2.10. Notifications: 
-This block features only of 2 functions, *showNotifications that it is to show the 
-list of the notifications and *delateNotifications that will allow us erase the 
-notifications. 
+This block features only of 2 functions, *showNotifications that it is to show the list of the notifications and *delateNotifications that will allow us erase the notifications. 
  
 ### 2.11. Home:
 This functionality only has a function. *GoHomeAction Allow us *rendering the *twig of the man where will find all the specifications that ask . 
@@ -58,9 +56,9 @@ This functionality only has a function. *GoHomeAction Allow us *rendering the *t
 ### 2.12. Images more seen:
 This functionality find it in the function of the man, where have done a *select to order all the *posts that have done  as the date of creation and next have sent the result of this *select to the *twig.
 
-**Date of deliver** : 18/05/2017
-
-**Colaborators:**
+**Delivery date** : 18/05/2017
+ 
+**Collaborators:**
 
    - Albert Bosch Pascual  ls28932
    - Albert Martí Rolland  ls28855
